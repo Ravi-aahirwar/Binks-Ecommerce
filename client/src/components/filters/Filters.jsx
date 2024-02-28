@@ -3,7 +3,7 @@ import { useFilterContexts } from '../../utils/contexts/FilterContexts'
 
 export default function Filters() {
 
-  const { filter_products, all_products, handleFiltersValue, filters: { maxPrice, price, minPrice } } = useFilterContexts()
+  const { filter_products, all_products, handleFiltersValue, sorting, filters: { maxPrice, price, minPrice } } = useFilterContexts()
 
   const getCategoryData = (data, property) => {
     let newData = data.map((elm) => {
@@ -18,7 +18,7 @@ export default function Filters() {
     <div>
       <h1> {filter_products.length} Products Available </h1>
       <h2> Sort By Price.</h2>
-      <form>
+      <form onChange={sorting}>
         <label>
           <input type="radio" id='low' name='radio' value="lowest" />
           High to Low.

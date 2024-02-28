@@ -11,6 +11,7 @@ const FilterContextsProvider = ({ children }) => {
     const initialState = {
         filter_products: [],
         all_products: [],
+        sorting_value: "",
         filters: {
             text: "",
             category: "All",
@@ -35,6 +36,41 @@ const FilterContextsProvider = ({ children }) => {
             }
         }
 
+        if (action.type === "GET_SORT_VALUE") {
+            return {
+                ...state,
+                sorting_value: action.payload
+            }
+        }
+
+        if (action.type === "SORTING_PRODUCTS") {
+            let sortData;
+            const { filter_products, sorting_value } = state;
+            const sortProducts = [...filter_products]
+
+            const sortingProducts = (a, b) => {
+                if (sorting_value === "highest") {
+                    return a.price - b.price
+                }
+                if (sorting_value === "lowest") {
+                    return b.price - a.price
+                }
+                if (sorting_value === "a-z") {
+                    return a.category.localeCompare(b.category)
+                }
+                if (sorting_value === "z-a") {
+                    return b.category.localeCompare(a.category)
+                }
+            }
+            sortData = sortProducts.sort(sortingProducts)
+
+            return {
+                ...state,
+                filter_products: sortData
+            }
+        }
+
+
         if (action.type === "HANDLE_FILTER_VALUE") {
             const { name, value } = action.payload;
             return {
@@ -42,7 +78,6 @@ const FilterContextsProvider = ({ children }) => {
                 filters: {
                     ...state.filters, [name]: value
                 }
-                // text: action.payload
             }
         }
 
@@ -60,10 +95,10 @@ const FilterContextsProvider = ({ children }) => {
                     return elm.category === category
                 })
             }
-            if(price === 0){
-                filterProducts = filterProducts.filter((elm)=> elm.price === price )
-            } else{
-                filterProducts = filterProducts.filter((elm)=> elm.price <= price);
+            if (price === 0) {
+                filterProducts = filterProducts.filter((elm) => elm.price === price)
+            } else {
+                filterProducts = filterProducts.filter((elm) => elm.price <= price);
             }
             return {
                 ...state,
@@ -83,9 +118,15 @@ const FilterContextsProvider = ({ children }) => {
         dispatch({ type: "HANDLE_FILTER_VALUE", payload: { name, value } })
     }
 
+    const sorting = (event) => {
+        let sortingValue = event.target.value
+        dispatch({ type: "GET_SORT_VALUE", payload: sortingValue })
+    }
+
     useEffect(() => {
         dispatch({ type: "FILTER_PRODUCTS" })
-    }, [state.filters])
+        dispatch({ type: "SORTING_PRODUCTS" })
+    }, [state.filters, state.sorting_value])
 
     useEffect(() => {
         dispatch({ type: "ALL_FILTER_PRODUCTS", payload: products })
@@ -95,6 +136,7 @@ const FilterContextsProvider = ({ children }) => {
         <filterContexts.Provider value={{
             ...state,
             handleFiltersValue,
+            sorting
 
         }}>
             {children}
