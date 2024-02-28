@@ -3,7 +3,8 @@ import { useFilterContexts } from '../../utils/contexts/FilterContexts'
 
 export default function Filters() {
 
-  const { filter_products, all_products, handleFiltersValue, sorting, filters: { maxPrice, price, minPrice } } = useFilterContexts()
+  const { filter_products, all_products, handleFiltersValue, sorting} = useFilterContexts()
+  // filters: { maxPrice, price, minPrice }
 
   const getCategoryData = (data, property) => {
     let newData = data.map((elm) => {
@@ -48,14 +49,14 @@ export default function Filters() {
         })
       }
       <h2> Range Pice Filter </h2>
-      <p> {price.toLocaleString()} </p>
+      {/* <p> {price.toLocaleString()} </p>
       <input type="range"
         min={minPrice}
         max={maxPrice}
         name='price'
         value={price}
         onChange={handleFiltersValue}
-      />
+      /> */}
     </div>
   )
 }

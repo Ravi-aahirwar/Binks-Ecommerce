@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <div>
      <Navbar/>
+     <h2> {error} </h2>
     </div>
   )
 }

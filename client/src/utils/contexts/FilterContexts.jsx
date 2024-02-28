@@ -15,9 +15,9 @@ const FilterContextsProvider = ({ children }) => {
         filters: {
             text: "",
             category: "All",
-            maxPrice: 0,
-            price: 0,
-            minPrice: 0,
+            // maxPrice: 0,
+            // price: 0,
+            // minPrice: 0,
         },
     }
 
@@ -25,14 +25,14 @@ const FilterContextsProvider = ({ children }) => {
 
         if (action.type === "ALL_FILTER_PRODUCTS") {
 
-            let priceArray = action.payload.map((elm) => elm.price)
-            let maxPrice = Math.max(...priceArray)
+            // let priceArray = action.payload.map((elm) => elm.price)
+            // let maxPrice = Math.max(...priceArray)
 
             return {
                 ...state,
                 all_products: [...action.payload],
                 filter_products: [...action.payload],
-                filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice }
+                // filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice }
             }
         }
 
@@ -84,7 +84,7 @@ const FilterContextsProvider = ({ children }) => {
         if (action.type === "FILTER_PRODUCTS") {
             const { all_products } = state;
             let filterProducts = all_products
-            const { text, category, price } = state.filters;
+            const { text, category} = state.filters;
             if (text) {
                 filterProducts = filterProducts.filter((elm) => {
                     return elm.title.toLowerCase().includes(text);
@@ -95,11 +95,11 @@ const FilterContextsProvider = ({ children }) => {
                     return elm.category === category
                 })
             }
-            if (price === 0) {
-                filterProducts = filterProducts.filter((elm) => elm.price === price)
-            } else {
-                filterProducts = filterProducts.filter((elm) => elm.price <= price);
-            }
+            // if (price === 0) {
+            //     filterProducts = filterProducts.filter((elm) => elm.price === price)
+            // } else {
+            //     filterProducts = filterProducts.filter((elm) => elm.price <= price);
+            // }
             return {
                 ...state,
                 filter_products: filterProducts

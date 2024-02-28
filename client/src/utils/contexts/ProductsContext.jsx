@@ -12,7 +12,7 @@ const ProductsProvider = ({ children }) => {
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)
-    const API_URL = process.env.NODE_ENV === "production"? "https://binks-ecommerce-mern-backend.vercel.app/api/data":"http://localhost:5000/api/data"
+    const API_URL = process.env.NODE_ENV === "production" ? "https://binks-ecommerce-mern-backend.vercel.app/api/data":"http://localhost:5000/api/data"
     
     const getApiData = async (url) => {
         dispatch({ type: "LOADING" })
@@ -21,7 +21,7 @@ const ProductsProvider = ({ children }) => {
             const response = await apiData.data
             dispatch({ type: "SET_API_DATA", payload: response })
         } catch (error) {
-            dispatch({ type: "API_ERROR", payload: error.message })
+            dispatch({ type: "API_ERROR", payload: error.message})
         }
 
     }
