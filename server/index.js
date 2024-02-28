@@ -2,7 +2,10 @@ const express = require("express")
 const cors = require("cors")
 const app = express()
 
-app.use(cors({origin:"http://localhost:5173"}))
+const isDev = app.settings.env === "development"
+const URL = isDev ? "http://localhost:5173" :""
+
+app.use(cors({origin:URL}))
 
 app.get("/api/data", (req, res) => {
 

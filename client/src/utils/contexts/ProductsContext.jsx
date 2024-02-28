@@ -12,8 +12,8 @@ const ProductsProvider = ({ children }) => {
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)
-
-    const API_URL = "http://localhost:5000/api/data"
+    const API_URL = process.env.NODE_ENV === "production"? "https://binks-ecommerce-backend.vercel.app":"http://localhost:5000/api/data"
+    
     const getApiData = async (url) => {
         dispatch({ type: "LOADING" })
         try {
