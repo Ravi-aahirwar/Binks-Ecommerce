@@ -6,7 +6,7 @@ import { useCartContext } from '../../utils/contexts/CartContext'
 
 export default function Cart() {
 
-  const { cart, clearCart, total_item, total_price, shipping_fee } = useCartContext()
+  const { cart, clearCart, total_price, shipping_fee } = useCartContext()
   let totalPrice = shipping_fee + total_price;
 
   return (
@@ -26,7 +26,7 @@ export default function Cart() {
       )}
 
       <button onClick={clearCart} >Clear Cart</button>
-      <h3> SubTotal : {total_price} </h3>
+      <h3> SubTotal : {parseFloat(total_price).toFixed(2)} </h3>
       <h3> Shipping Fees : {shipping_fee} </h3>
       <hr />
       <h2>Order Total : {totalPrice.toLocaleString()} </h2>

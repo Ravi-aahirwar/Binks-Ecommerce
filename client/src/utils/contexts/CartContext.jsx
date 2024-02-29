@@ -12,17 +12,8 @@ const CartContextProvider = ({ children }) => {
 
     const reducer = (state, action) => {
 
-        if (action.type === "LOAD_CART") {
-            return {
-                ...state,
-                cart: action.payload,
-            };
-        }
-
-
         if (action.type === "ADD_TO_CART") {
             let { id, amount, product } = action.payload;
-            // existing Product In Cart
             let existingProduct = state.cart.find((elm) => elm.id === id);
             if (existingProduct) {
                 let updatedProduct = state.cart.map((elm) => {
@@ -125,27 +116,63 @@ const CartContextProvider = ({ children }) => {
                     ...state,
                     total_price: 0,
                 };
-            }        
+            }
             let total_price = state.cart.reduce((initialVal, elm) => {
                 let { price, amount } = elm;
                 initialVal = initialVal + price * amount;
                 return initialVal;
             }, 0);
-        
+
             return {
                 ...state,
                 total_price,
             };
         }
-        
+        // add To Favourite.
+        if (action.type === "ADD_TO_FAVOURITE") {
+            let { id, product } = action.payload;
+            let existingProduct = state.favourite.find((elm) => elm.id === id)
+            if (existingProduct) {
+                alert("Product Already In WishList ! Choose Another One :)")
+            } else {
+                alert("Added Favourite")
+                let favouriteProduct;
+                favouriteProduct = {
+                    id: product[0],
+                    title: product[1],
+                    price: product[2],
+                    description: product[3],
+                    category: product[4],
+                    image: product[5],
+                    rate: product[6]
+                }
+                return {
+                    ...state,
+                    favourite: [...state.favourite, favouriteProduct],
+                }
+            }
+        }
 
+        // delete Item to favourite
+        if(action.type === "REMOVE_FROM_FAVOURITE"){
+            let removeFavourite = state.favourite.filter((elm) =>(
+                elm.id !== action.payload)
+            ) 
+            return{
+                ...state,
+                favourite: removeFavourite
+            }
+        }
         return state
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)
-
     const addToCart = (id, amount, product) => {
         dispatch({ type: "ADD_TO_CART", payload: { id, amount, product } })
+    }
+
+    const addToFavourite = (id, product) => {
+        dispatch({ type: "ADD_TO_FAVOURITE", payload: { id, product } })
     }
     const clearCart = () => {
         dispatch({ type: "CLEAR_CART" })
@@ -159,24 +186,22 @@ const CartContextProvider = ({ children }) => {
     const removeItem = (id) => {
         dispatch({ type: "REMOVE_ITEM", payload: id })
     }
-    
+    const removeFavourite = (id) =>{
+        dispatch({type:"REMOVE_FROM_FAVOURITE", payload: id})
+    }
+
     useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(state.cart));
         dispatch({ type: "CART_TOTAL_PRICE" })
     }, [state.cart])
-
-    useEffect(() => {
-        const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-        dispatch({ type: "LOAD_CART", payload: savedCart });
-      }, []);
-
     return <cartContext.Provider value={{
         ...state,
         addToCart,
         clearCart,
         setDecrease,
         setIncrease,
-        removeItem
+        removeItem,
+        addToFavourite,
+        removeFavourite
     }} >
         {children}
     </cartContext.Provider>
