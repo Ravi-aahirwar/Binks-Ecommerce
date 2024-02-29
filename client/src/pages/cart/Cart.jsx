@@ -19,9 +19,12 @@ export default function Cart() {
           })
         }
       </div>
-      <Link to="/products">
-        <h4>Continue Shopping</h4>
-      </Link>
+      {cart.length > 0 && (
+        <Link to="/products">
+          <h4>Continue Shopping</h4>
+        </Link>
+      )}
+
       <button onClick={clearCart} >Clear Cart</button>
       <h3> SubTotal : {total_price} </h3>
       <h3> Shipping Fees : {shipping_fee} </h3>

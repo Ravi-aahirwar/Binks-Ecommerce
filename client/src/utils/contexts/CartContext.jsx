@@ -15,7 +15,7 @@ const CartContextProvider = ({ children }) => {
     const initialState = {
         cart: getLocaleCartData(),
         favourite: [],
-        total_price: "",
+        total_price: 0,
         shipping_fee: 0
     }
 
