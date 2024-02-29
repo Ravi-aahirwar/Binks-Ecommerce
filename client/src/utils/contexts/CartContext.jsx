@@ -3,12 +3,12 @@ const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
 
-    const getLocaleCartData = () => {
-        let cartData = localStorage.getItem("binksCart");
-        if (JSON.parse(cartData).length === 0) {
+    const getLocaleCartData = ()=>{
+        let cartData = localStorage.getItem("binksCart")
+        if(cartData == []){
             return [];
-        } else {
-            return JSON.parse(cartData);
+        } else{
+            return  JSON.parse(cartData)
         }
     }
 
@@ -156,7 +156,7 @@ const CartContextProvider = ({ children }) => {
     useEffect(()=>{
         localStorage.setItem("binksCart", JSON.stringify(state.cart) )
     },[state.cart]);
-
+    
     useEffect(() => {
         dispatch({ type: "CART_TOTAL_PRICE" })
     }, [state.cart])
