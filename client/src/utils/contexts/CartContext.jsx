@@ -3,16 +3,6 @@ const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
 
-    // const getLocaleCartData = ()=>{
-    //     let cartData = localStorage.getItem("binksCart")
-    //     console.log(cartData);
-    //     if(cartData == []){
-    //         return [];
-    //     } else{
-    //         return  JSON.parse(cartData)
-    //     }
-    // }
-
     const initialState = {
         cart: [],
         favourite: [],
@@ -21,6 +11,15 @@ const CartContextProvider = ({ children }) => {
     }
 
     const reducer = (state, action) => {
+
+        if (action.type === "LOAD_CART") {
+            return {
+                ...state,
+                cart: action.payload,
+            };
+        }
+
+
         if (action.type === "ADD_TO_CART") {
             let { id, amount, product } = action.payload;
             // existing Product In Cart
@@ -44,7 +43,6 @@ const CartContextProvider = ({ children }) => {
                 }
 
             } else {
-                // existing Product In Cart Finish
                 let cartProduct;
                 cartProduct = {
                     id,
@@ -161,14 +159,16 @@ const CartContextProvider = ({ children }) => {
     const removeItem = (id) => {
         dispatch({ type: "REMOVE_ITEM", payload: id })
     }
-
-    // useEffect(()=>{
-    //     localStorage.setItem("binksCart", JSON.stringify(state.cart) )
-    // },[state.cart]);
     
     useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(state.cart));
         dispatch({ type: "CART_TOTAL_PRICE" })
     }, [state.cart])
+
+    useEffect(() => {
+        const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+        dispatch({ type: "LOAD_CART", payload: savedCart });
+      }, []);
 
     return <cartContext.Provider value={{
         ...state,
