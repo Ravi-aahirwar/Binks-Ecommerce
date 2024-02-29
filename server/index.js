@@ -2,10 +2,10 @@ const express = require("express")
 const cors = require("cors")
 const app = express()
 
-const isDev = app.settings.env === "development"
-const URL = isDev ? "http://localhost:5173" :"https://binks-ecommerce-mern-frontend.vercel.app"
+// const isDev = app.settings.env === "development"
+// const URL = isDev ? "http://localhost:5173" :"https://binks-ecommerce-mern-frontend.vercel.app"
 
-app.use(cors({origin:URL}))
+// app.use(cors({origin:URL}))
 
 app.get("/api/data", (req, res) => {
 
