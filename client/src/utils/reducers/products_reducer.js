@@ -14,7 +14,7 @@ const reducer = (state, action) =>{
             loading:false
         }
     }
-    if(action.type === "ERROR"){
+    if(action.type === "API_ERROR"){
         return {
             ...state,
             loading:false,

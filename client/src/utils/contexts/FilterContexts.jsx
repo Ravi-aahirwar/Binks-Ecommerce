@@ -15,24 +15,29 @@ const FilterContextsProvider = ({ children }) => {
         filters: {
             text: "",
             category: "All",
-            // maxPrice: 0,
-            // price: 0,
-            // minPrice: 0,
+            maxPrice: 0,
+            minPrice: 0,
+            price: 0,
         },
     }
 
     const reducer = (state, action) => {
 
         if (action.type === "ALL_FILTER_PRODUCTS") {
-
-            // let priceArray = action.payload.map((elm) => elm.price)
-            // let maxPrice = Math.max(...priceArray)
-
-            return {
-                ...state,
-                all_products: [...action.payload],
-                filter_products: [...action.payload],
-                // filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice }
+            if (action.payload) {
+                let priceArray = action.payload.map((elm) => elm.price);
+                let maxPrice = Math.max(...priceArray);
+                let minPrice = Math.min(...priceArray);
+                return {
+                    ...state,
+                    all_products: [...action.payload],
+                    filter_products: [...action.payload],
+                    filters: { ...state.filters, maxPrice: maxPrice, minPrice: minPrice, price: maxPrice },
+                };
+            } else {
+                // Handle the case where action.payload is not defined or not an array.
+                console.error("Invalid payload for ALL_FILTER_PRODUCTS");
+                return state;
             }
         }
 
@@ -50,10 +55,10 @@ const FilterContextsProvider = ({ children }) => {
 
             const sortingProducts = (a, b) => {
                 if (sorting_value === "highest") {
-                    return a.price - b.price
+                    return b.price - a.price
                 }
                 if (sorting_value === "lowest") {
-                    return b.price - a.price
+                    return a.price - b.price
                 }
                 if (sorting_value === "a-z") {
                     return a.category.localeCompare(b.category)
@@ -84,7 +89,7 @@ const FilterContextsProvider = ({ children }) => {
         if (action.type === "FILTER_PRODUCTS") {
             const { all_products } = state;
             let filterProducts = all_products
-            const { text, category} = state.filters;
+            const { text, category, price } = state.filters;
             if (text) {
                 filterProducts = filterProducts.filter((elm) => {
                     return elm.title.toLowerCase().includes(text);
@@ -95,17 +100,17 @@ const FilterContextsProvider = ({ children }) => {
                     return elm.category === category
                 })
             }
-            // if (price === 0) {
-            //     filterProducts = filterProducts.filter((elm) => elm.price === price)
-            // } else {
-            //     filterProducts = filterProducts.filter((elm) => elm.price <= price);
-            // }
+            if (price === 0) {
+                filterProducts = filterProducts.filter((elm) => elm.price === price)
+            } else {
+                filterProducts = filterProducts.filter((curElm) => curElm.price <= price);
+            }
+
             return {
                 ...state,
                 filter_products: filterProducts
             }
         }
-
 
         return state
     }
@@ -123,6 +128,11 @@ const FilterContextsProvider = ({ children }) => {
         dispatch({ type: "GET_SORT_VALUE", payload: sortingValue })
     }
 
+
+
+
+
+
     useEffect(() => {
         dispatch({ type: "FILTER_PRODUCTS" })
         dispatch({ type: "SORTING_PRODUCTS" })
@@ -136,7 +146,7 @@ const FilterContextsProvider = ({ children }) => {
         <filterContexts.Provider value={{
             ...state,
             handleFiltersValue,
-            sorting
+            sorting,
 
         }}>
             {children}

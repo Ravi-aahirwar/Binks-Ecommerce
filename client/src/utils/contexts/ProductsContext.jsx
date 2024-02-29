@@ -8,7 +8,7 @@ const ProductsProvider = ({ children }) => {
     const initialState = {
         products: [],
         loading: false,
-        error: false,
+        error: "",
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)
