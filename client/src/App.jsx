@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Products from './pages/products/Products'
 import Favourite from './pages/favourite/Favourite'
 import Cart from './pages/cart/Cart'
@@ -8,12 +8,12 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/products' element={<Products/>} />
-        <Route path='/favourite' element={<Favourite/>} />
-        <Route path='/cart' element={<Cart/>} />
-      </Routes>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/products' element={<Products />} />
+          <Route exact path='/favourite' element={<Favourite />} />
+          <Route exact path='/cart' element={<Cart />} />
+        </Routes>
     </BrowserRouter>
   )
 }
