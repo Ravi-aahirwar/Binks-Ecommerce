@@ -3,18 +3,18 @@ const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
 
-    const getLocaleCartData = ()=>{
-        let cartData = localStorage.getItem("binksCart")
-        console.log(cartData);
-        if(cartData == []){
-            return [];
-        } else{
-            return  JSON.parse(cartData)
-        }
-    }
+    // const getLocaleCartData = ()=>{
+    //     let cartData = localStorage.getItem("binksCart")
+    //     console.log(cartData);
+    //     if(cartData == []){
+    //         return [];
+    //     } else{
+    //         return  JSON.parse(cartData)
+    //     }
+    // }
 
     const initialState = {
-        cart: getLocaleCartData(),
+        cart: [],
         favourite: [],
         total_price: 0,
         shipping_fee: 0
@@ -119,28 +119,6 @@ const CartContextProvider = ({ children }) => {
                 ...state, cart: updatedProduct
             }
         }
-
-        // if (action.type === "CART_TOTAL_PRICE") {
-        //     if (!state.cart || !Array.isArray(state.cart)) {
-        //         console.log(state.cart);
-        //         return {
-        //             ...state,
-        //             total_price: 0,
-        //         };
-        //     }        
-        //     let total_price = state.cart.reduce((initialVal, elm) => {
-        //         let { price, amount } = elm;
-        //         initialVal = initialVal + price * amount;
-        //         return initialVal;
-        //     }, 0);
-        
-        //     return {
-        //         ...state,
-        //         total_price,
-        //     };
-        // }
-        
-
         return state
     }
 
@@ -162,9 +140,9 @@ const CartContextProvider = ({ children }) => {
         dispatch({ type: "REMOVE_ITEM", payload: id })
     }
 
-    useEffect(()=>{
-        localStorage.setItem("binksCart", JSON.stringify(state.cart) )
-    },[state.cart]);
+    // useEffect(()=>{
+    //     localStorage.setItem("binksCart", JSON.stringify(state.cart) )
+    // },[state.cart]);
     
     // useEffect(() => {
     //     dispatch({ type: "CART_TOTAL_PRICE" })
