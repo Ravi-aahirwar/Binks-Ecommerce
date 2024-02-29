@@ -5,7 +5,6 @@ import { useProductContext } from '../../utils/contexts/ProductsContext'
 export default function Home() {
 
     const {loading, error} = useProductContext()
-    console.log(error);
     if(loading){
         return <h2>Loading...</h2>
     }

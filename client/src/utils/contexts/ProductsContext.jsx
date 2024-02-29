@@ -9,6 +9,7 @@ const ProductsProvider = ({ children }) => {
         products: [],
         loading: false,
         error: "",
+        singleProduct:{},
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -26,12 +27,26 @@ const ProductsProvider = ({ children }) => {
 
     }
 
+    const getApiProduct = async (url)=>{
+        dispatch({type:"GET_PRODUCT_LOADING"})
+    try {
+        const res = await axios.get(url);
+        const apiProduct = await res.data;
+        dispatch({type:"GET_PRODUCT", payload: apiProduct})
+    } catch (error) {
+        dispatch({key:"GET_PRODUCT_ERROR", payload: error.message})
+    }
+}
+
     useEffect(() => {
         getApiData(API_URL)
     }, [])
 
     return (
-        <productsContext.Provider value={{ ...state }} >
+        <productsContext.Provider value={{ 
+            ...state,
+            getApiProduct
+             }} >
             {children}
         </productsContext.Provider>
     )
