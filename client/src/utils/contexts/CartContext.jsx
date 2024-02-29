@@ -120,25 +120,25 @@ const CartContextProvider = ({ children }) => {
             }
         }
 
-        if (action.type === "CART_TOTAL_PRICE") {
-            if (!state.cart || !Array.isArray(state.cart)) {
-                console.log(state.cart);
-                return {
-                    ...state,
-                    total_price: 0, // or any default value you want to set
-                };
-            }        
-            let total_price = state.cart.reduce((initialVal, elm) => {
-                let { price, amount } = elm;
-                initialVal = initialVal + price * amount;
-                return initialVal;
-            }, 0);
+        // if (action.type === "CART_TOTAL_PRICE") {
+        //     if (!state.cart || !Array.isArray(state.cart)) {
+        //         console.log(state.cart);
+        //         return {
+        //             ...state,
+        //             total_price: 0,
+        //         };
+        //     }        
+        //     let total_price = state.cart.reduce((initialVal, elm) => {
+        //         let { price, amount } = elm;
+        //         initialVal = initialVal + price * amount;
+        //         return initialVal;
+        //     }, 0);
         
-            return {
-                ...state,
-                total_price,
-            };
-        }
+        //     return {
+        //         ...state,
+        //         total_price,
+        //     };
+        // }
         
 
         return state
@@ -152,7 +152,6 @@ const CartContextProvider = ({ children }) => {
     const clearCart = () => {
         dispatch({ type: "CLEAR_CART" })
     }
-
     const setDecrease = (id) => {
         dispatch({ type: "SET_DECREMENT", payload: id })
     }
@@ -167,9 +166,9 @@ const CartContextProvider = ({ children }) => {
         localStorage.setItem("binksCart", JSON.stringify(state.cart) )
     },[state.cart]);
     
-    useEffect(() => {
-        dispatch({ type: "CART_TOTAL_PRICE" })
-    }, [state.cart])
+    // useEffect(() => {
+    //     dispatch({ type: "CART_TOTAL_PRICE" })
+    // }, [state.cart])
 
     return <cartContext.Provider value={{
         ...state,

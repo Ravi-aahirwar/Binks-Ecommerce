@@ -15,12 +15,12 @@ export default function CartItem({ id, title, image, price, amount, category, de
                     <p> Category: {category} </p>
                 </div>
                 <div style={{ display: 'flex', gap: "10px" }} >
-                    <CartToggle
+                    {/* <CartToggle
                         amount={amount}
                         setDecrease={() => setDecrease(id)}
                         setIncrease={() => setIncrease(id)}
-                    />
-                    <h5>Total Amount: {(price * amount).toFixed(2)}</h5>
+                    /> */}
+                    {/* <h5>Total Amount: {(price * amount).toFixed(2)}</h5> */}
                 </div>
                 <p style={{textAlign:"center", color:"red", cursor:"pointer"}} onClick={()=> removeItem(id)} >Remove</p>
             </div>
