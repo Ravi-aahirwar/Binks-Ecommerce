@@ -5,6 +5,7 @@ const CartContextProvider = ({ children }) => {
 
     const getLocaleCartData = ()=>{
         let cartData = localStorage.getItem("binksCart")
+        console.log(cartData);
         if(cartData == []){
             return [];
         } else{
@@ -120,16 +121,25 @@ const CartContextProvider = ({ children }) => {
         }
 
         if (action.type === "CART_TOTAL_PRICE") {
+            if (!state.cart || !Array.isArray(state.cart)) {
+                console.log(state.cart);
+                return {
+                    ...state,
+                    total_price: 0, // or any default value you want to set
+                };
+            }        
             let total_price = state.cart.reduce((initialVal, elm) => {
                 let { price, amount } = elm;
-                initialVal = initialVal + (price * amount);
+                initialVal = initialVal + price * amount;
                 return initialVal;
-            }, 0)
+            }, 0);
+        
             return {
                 ...state,
                 total_price,
-            }
+            };
         }
+        
 
         return state
     }
