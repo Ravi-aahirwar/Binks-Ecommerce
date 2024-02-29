@@ -170,7 +170,6 @@ const CartContextProvider = ({ children }) => {
     const addToCart = (id, amount, product) => {
         dispatch({ type: "ADD_TO_CART", payload: { id, amount, product } })
     }
-
     const addToFavourite = (id, product) => {
         dispatch({ type: "ADD_TO_FAVOURITE", payload: { id, product } })
     }

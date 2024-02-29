@@ -1,11 +1,10 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { useCartContext } from '../../utils/contexts/CartContext'
-import ProductsCard from '../../components/card/ProductsCard'
 
 export default function Favourite() {
-  const { favourite, removeFavourite } = useCartContext()
+  const { favourite, removeFavourite} = useCartContext()
 
   return (
     <div>
@@ -21,9 +20,6 @@ export default function Favourite() {
                 <h5> Price : {price} </h5>
               </Link>
               <h5> Category: {category} </h5>
-              <Link to="/cart" >
-                <h3 style={{ color: "green", cursor: "pointer" }}>Add to Cart</h3>
-              </Link>
               <h2 style={{ color: "red", cursor: "pointer" }} onClick={() => removeFavourite(id)} >Delete</h2>
             </div >
           </div>
