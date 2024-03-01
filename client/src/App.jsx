@@ -8,6 +8,7 @@ import Error from './pages/Error'
 import Sucess from './pages/Sucess'
 import Cancel from './pages/Cancel'
 import ProductDetail from './pages/productDetail/ProductDetail'
+import CategoryPage from './pages/categoryPage/CategoryPage'
 export default function App() {
 
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path='*' element={<Error />} />
         <Route path='/sucess' element={<Sucess/>} />
         <Route path='/cancel' element={<Cancel/>} />
+        <Route path='/category/:id' element={<CategoryPage/>} />
       </Routes>
     </Router>
   )
