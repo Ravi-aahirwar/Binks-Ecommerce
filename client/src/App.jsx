@@ -9,6 +9,7 @@ import Sucess from './pages/Sucess'
 import Cancel from './pages/Cancel'
 import ProductDetail from './pages/productDetail/ProductDetail'
 import CategoryPage from './pages/categoryPage/CategoryPage'
+import "./App.css"
 export default function App() {
 
   return (

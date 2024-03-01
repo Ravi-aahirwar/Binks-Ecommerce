@@ -8,6 +8,7 @@ export default function CategoryPage() {
     const { all_products } = useFilterContexts()
 
     const filterProducts = all_products.filter((elm) => elm.category.includes(id))
+
     return (
         <div>
             <Navbar/>
