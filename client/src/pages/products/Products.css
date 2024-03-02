@@ -1,0 +1,24 @@
+.filter-products-div {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+     display: flex;
+}
+
+.main-filters-div {
+    width: 30%;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 50px;
+    overflow: hidden;
+    height: fit-content;
+    border-right: 1px solid rgb(137, 135, 135);
+}
+
+.all-products-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+}

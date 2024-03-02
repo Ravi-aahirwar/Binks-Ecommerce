@@ -1,0 +1,14 @@
+.cartToggleOuterDiv{
+    border: 1px solid #d1cbcb;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px;
+    border-radius: 5px;
+    margin: 5px;
+}
+.cartToggleOuterDiv p,h5{
+    font-size: 1.3rem;
+    cursor: pointer;
+}

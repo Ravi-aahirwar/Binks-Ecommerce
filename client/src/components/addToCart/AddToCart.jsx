@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartToggle from '../cartToggle/CartToggle';
 import { useCartContext } from '../../utils/contexts/CartContext';
+import "./AddToCart.css"
 export default function AddToCart({ product }) {
+
+    const navigate = useNavigate()
 
     const { addToCart } = useCartContext()
     const { id } = product
@@ -18,19 +21,20 @@ export default function AddToCart({ product }) {
 
     const handleAddToCart = () => {
         addToCart(id, amount, product)
+        navigate("/cart")
+
     }
 
     return (
-        <div>
+        <div className='addToCart-outer-div' >
             <CartToggle
                 amount={amount}
                 setDecrease={setDecrease}
                 setIncrease={setIncrease}
             />
-            <hr />
-            <Link to="/cart" onClick={handleAddToCart} >
-                <button>Add To Cart</button>
-            </Link>
+            <div className='addToCart-button'>
+                <button onClick={handleAddToCart} >Add To Cart</button>
+            </div>
         </div>
     )
 }

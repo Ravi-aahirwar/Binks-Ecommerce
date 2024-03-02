@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useFilterContexts } from '../../utils/contexts/FilterContexts'
-
+import "./Filters.css"
 export default function Filters() {
 
   const { filter_products,
@@ -21,46 +21,54 @@ export default function Filters() {
 
   return (
     <div>
-      <h1> {filter_products.length} Products Available </h1>
-      <h2> Sort By Price.</h2>
-      <form onChange={sorting}>
-        <label>
-          <input type="radio" id='low' name='radio' value="lowest" />
-          Price: Low to High
-        </label>
-        <label>
-          <input type="radio" id='High' name='radio' value="highest" />
-          Price: High to Low
-        </label>
-        <label>
-          <input type="radio" id='a-z' name='radio' value="a-z" />
-          Products: A-Z
-        </label>
-        <label>
-          <input type="radio" id='z-a' name='radio' value="z-a" />
-          Products: Z-A
-        </label>
-      </form>
-      <h2> Filter By Category </h2>
-      {
-        categoryData.map((elm, index) => {
-          return (
-            <label key={index} >
-              <input type="radio" value={elm} name='category' onChange={handleFiltersValue} />
-              {elm}.
+      <h1 className='productsAvailable'> {filter_products.length} Products Available. </h1>
+      <div className='filters-outer-div filters' >
+        <h2 className='productsAvailable' > Sort By Price.</h2>
+        <div className='sorting-div-outer'>
+          <form onChange={sorting} className='filters' >
+            <label>
+              <input type="radio" id='low' name='radio' value="lowest" />
+               Low to High
             </label>
-          )
-        })
-      }
-      <h2> Range Pice Filter </h2>
-      <input type="range"
-        min={minPrice}
-        max={maxPrice}
-        value={price}
-        name='price'
-        onChange={handleFiltersValue}
-      />
-      <p> Filtered Price: {price}  </p>
+            <label>
+              <input type="radio" id='High' name='radio' value="highest" />
+               High to Low
+            </label>
+            <label>
+              <input type="radio" id='a-z' name='radio' value="a-z" />
+               A-Z
+            </label>
+            <label>
+              <input type="radio" id='z-a' name='radio' value="z-a" />
+               Z-A
+            </label>
+          </form>
+        </div>
+        <h2 className='productsAvailable'> Filter By Category. </h2>
+        <div className='categoryFIlter-outer-div filters'>
+          {
+            categoryData.map((elm, index) => {
+              return (
+                <label key={index} >
+                  <input type="radio" value={elm} name='category' onChange={handleFiltersValue} />
+                  {elm}.
+                </label>
+              )
+            })
+          }
+        </div>
+        <h2 className='productsAvailable'> Filter By Price. </h2>
+        <div className='range-price-filter filters'>
+          <input type="range"
+            min={minPrice}
+            max={maxPrice}
+            value={price}
+            name='price'
+            onChange={handleFiltersValue}
+          />
+          <p className='productsAvailable'> Filtered Price: {price}  </p>
+        </div>
+      </div>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import CategoryComp from '../../components/categoryComp/CategoryComp'
 import ProductsCard from '../../components/card/ProductsCard'
 import Loader from '../../components/loader/Loader'
 import "./Home.css"
+import 'react-toastify/dist/ReactToastify.css';
 export default function Home() {
 
   const { loading, error, products } = useProductContext()

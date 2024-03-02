@@ -1,0 +1,42 @@
+.cartOuter-div{
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(168, 162, 162);
+
+}
+.cartImag-divInner-div{
+    height: 200px;
+    width: 300px;
+}
+.cartImag-divInner-div img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.cart-item-div{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    margin: 10px 10px;
+    gap: 10px;
+}
+.title-price-category{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.title-price-category h4, h5{
+    color: rgb(105, 101, 101);
+    font-size: 1.2rem;
+}
+.toggle-or-remove{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}

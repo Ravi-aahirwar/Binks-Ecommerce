@@ -1,12 +1,12 @@
 import React from 'react'
-
-export default function CartToggle({ amount, setDecrease, setIncrease }) {
+import "./CartToggle.css"
+export default function CartToggle({ amount, setDecrease, setIncrease}) {
     return (
         <div>
-            <div style={{ display: 'flex', gap: "15px", cursor: "pointer" }}  >
-                <p onClick={setDecrease} style={{ fontSize: "14px" }} >-</p>
+            <div className='cartToggleOuterDiv'>
+                <p onClick={setDecrease}>-</p>
                 <h5>{amount}</h5>
-                <p onClick={setIncrease} style={{ fontSize: "14px" }} >+</p>
+                <p onClick={setIncrease}>+</p>
             </div>
         </div>
     )

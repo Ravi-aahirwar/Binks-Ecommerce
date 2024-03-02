@@ -1,0 +1,19 @@
+
+.filters{
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.8rem;
+    margin: 1rem;
+    text-align: center;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.productsAvailable{
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgb(147, 141, 141);
+}

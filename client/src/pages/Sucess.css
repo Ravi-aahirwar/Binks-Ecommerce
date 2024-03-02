@@ -1,0 +1,19 @@
+.payment-sucess{
+    background-image: url("https://media1.tenor.com/m/KFe6o_5Kg2oAAAAC/bddr-team-horizon-congratulations-gif-bddr.gif");
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-color: red;
+    background-size: cover;
+}
+.paymentMini-div h1, h4{
+    font-size: 2.3rem;
+    color: green;
+    margin: 10px 10px;
+    text-align: center;
+}
+.paymentMini-div h4{
+    font-size: 1.2rem;
+}
