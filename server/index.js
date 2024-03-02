@@ -5,10 +5,10 @@ const app = express()
 const stripe = require("stripe")("sk_test_51Ony30SINGekyYxSpASPIGm3MJq7wcm5pBh0eLAwlVaUaVkesrkzQf3ixKJ6U58lYW17G43PaynYNEXOvQfh23V500ygqsw1lI");
 
 const isDev = app.settings.env === "development"
-const URL = isDev ? "http://localhost:5173" : "https://binks-ecommerce-mern-frontend.vercel.app"
+const URL = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app"
 
-const sucess = isDev ? "http://localhost:5173" : "https://binks-ecommerce-mern-frontend.vercel.app"
-const cancel = isDev ? "http://localhost:5173" : "https://binks-ecommerce-mern-frontend.vercel.app"
+const sucess = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app"
+const cancel = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app"
 
 app.use(cors({ origin: URL }))
 
