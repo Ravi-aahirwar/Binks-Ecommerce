@@ -5,6 +5,7 @@ import Navbar from '../../components/navbar/Navbar'
 import AddToCart from '../../components/addToCart/AddToCart';
 import { useCartContext } from '../../utils/contexts/CartContext';
 import "./ProductDetail.css"
+import { toast } from 'react-toastify';
 export default function ProductDetail() {
     const { id } = useParams()
     const { addToFavourite } = useCartContext();
@@ -27,6 +28,7 @@ export default function ProductDetail() {
     const product = [id, title, price, description, category, image]
     const handleFavourite = () => {
         addToFavourite(id, product)
+        toast.success("Product Added To WishList.")
     }
     useEffect(() => {
         getApiProduct(`${API}/${id}`)

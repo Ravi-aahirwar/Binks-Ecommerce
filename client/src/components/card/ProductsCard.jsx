@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../../utils/contexts/CartContext';
 import "./ProductsCard.css"
+import { toast } from 'react-toastify';
 
 export default function ProductsCard(props) {
   const { id, title, price, description, category, image, rating: { rate } } = props.elm

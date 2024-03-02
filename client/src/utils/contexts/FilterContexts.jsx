@@ -35,7 +35,6 @@ const FilterContextsProvider = ({ children }) => {
                     filters: { ...state.filters, maxPrice: maxPrice, minPrice: minPrice, price: maxPrice },
                 };
             } else {
-                // Handle the case where action.payload is not defined or not an array.
                 console.error("Invalid payload for ALL_FILTER_PRODUCTS");
                 return state;
             }

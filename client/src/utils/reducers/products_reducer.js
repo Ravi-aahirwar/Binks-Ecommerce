@@ -21,6 +21,13 @@ const reducer = (state, action) => {
             error: action.payload
         }
     }
+    if(action.type === "GET_PRODUCT_ERROR"){
+        return {
+            ...state,
+            loading: false,
+            error: action.payload
+        } 
+    }
     if (action.type === "GET_PRODUCT") {
         return {
             ...state,

@@ -1,4 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
@@ -133,9 +135,9 @@ const CartContextProvider = ({ children }) => {
             let { id, product } = action.payload;
             let existingProduct = state.favourite.find((elm) => elm.id === id)
             if (existingProduct) {
-                alert("Product Already In WishList ! Choose Another One :)")
+                toast.error("Product Already In WishList ! Choose Another One")
             } else {
-                alert("Added Favourite")
+                toast.success("Product Added To WishList")
                 let favouriteProduct;
                 favouriteProduct = {
                     id: product[0],
@@ -154,11 +156,11 @@ const CartContextProvider = ({ children }) => {
         }
 
         // delete Item to favourite
-        if(action.type === "REMOVE_FROM_FAVOURITE"){
-            let removeFavourite = state.favourite.filter((elm) =>(
+        if (action.type === "REMOVE_FROM_FAVOURITE") {
+            let removeFavourite = state.favourite.filter((elm) => (
                 elm.id !== action.payload)
-            ) 
-            return{
+            )
+            return {
                 ...state,
                 favourite: removeFavourite
             }
@@ -185,8 +187,8 @@ const CartContextProvider = ({ children }) => {
     const removeItem = (id) => {
         dispatch({ type: "REMOVE_ITEM", payload: id })
     }
-    const removeFavourite = (id) =>{
-        dispatch({type:"REMOVE_FROM_FAVOURITE", payload: id})
+    const removeFavourite = (id) => {
+        dispatch({ type: "REMOVE_FROM_FAVOURITE", payload: id })
     }
 
     useEffect(() => {
