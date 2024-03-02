@@ -42,7 +42,7 @@ export default function ProductDetail() {
                 </div>
                 <div className='left-div detailDiv'>
                     <div className='inner-left-div'>
-                        <p className='product-title-h3'> {title.length >= 60 ?`${title.slice(0, 60)}...`: title} </p>
+                        <p className='product-title-h3'> {title} </p>
                         <div className='price-or-favourite'>
                             <span> ₹{price} </span>
                             <div className='rate-or-favourite'>
@@ -67,14 +67,6 @@ export default function ProductDetail() {
                     </div>
                 </div>
             </div>
-            {/* <div>
-                <img src={image} alt={category} height={60} width={60} />
-                <h2> Id : {id} </h2>
-                <h2>title: {title}</h2>
-                <h4> Price: {price} </h4>
-                <h5>Descriptions: {description} </h5>
-                <h5> Category: {category} </h5>
-            </div> */}
         </div>
     )
 }

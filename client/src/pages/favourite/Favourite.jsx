@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../../utils/contexts/CartContext'
 import "./Favourite.css"
 export default function Favourite() {
@@ -9,7 +9,9 @@ export default function Favourite() {
   let whiteHeart = "https://img.icons8.com/?size=48&id=85038&format=png"
   let cartImg = "https://img.icons8.com/?size=100&id=9671&format=png"
   let rating = "https://img.icons8.com/?size=96&id=8ggStxqyboK5&format=png"
-  console.log(favourite);
+
+  const navigate = useNavigate()
+  
   return (
     <div>
       <Navbar />
@@ -20,7 +22,7 @@ export default function Favourite() {
               <div className='products_div'>
                 <div className='product-outer-div' >
                   <div className='product-inner-div' >
-                    <div className='product-img-div flexCenter' onClick={() => navigate(`/productdetail/${id}`)} >
+                    <div classNsame='product-img-div flexCenter' onClick={() => navigate(`/productdetail/${id}`)} >
                       <img src={image} className='product-img' alt="Image" />
                     </div>
                     <div className='product-detail flexCenter'>
@@ -41,7 +43,6 @@ export default function Favourite() {
           })
         }
       </div>
-
       {favourite.length <= 0 && (
         <div className='favouriteImg-div' >
           <img src={favouriteImg} alt="Favourite" />
