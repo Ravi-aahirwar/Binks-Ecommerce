@@ -12,6 +12,11 @@
     padding: 10px 5px;
 }
 
+.filters label{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
 .productsAvailable{
     text-align: center;
     font-size: 1.2rem;
