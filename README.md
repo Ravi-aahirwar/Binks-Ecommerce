@@ -1,10 +1,9 @@
-# E-Commerce Project
-![bigcart512](<img width="960" alt="Screenshot 2024-03-02 152414" src="https://github.com/Ravi-aahirwar/Binks-Ecommerce/assets/147551112/afba65cc-e7fc-4cb5-af32-8286668e4365">)
-<h1>Big-Cart</h1>
-# Live Link : https://big-cart.vercel.app/
+
+<h1>Binks-Ecommerce</h1>
+# Live Link : https://binks-ecommerce.vercel.app/
 
 ## Table of Contents
-- [Introduction](#ntroduction)
+- [Introduction](#introduction)
 - [Tech Stack](#tech-stack)
 - [Screenshots](#screenshots)
 - [Features](#features)
@@ -16,27 +15,27 @@ With a focus on simplicity and clean design, this app prioritizes user experienc
 ## Tech Stack
 
 This project was built using the following technologies and tools:
-
 - Frontend:
   - HTML
   - CSS
   - JavaScript
   - ReactJS
   - Material UI
-  
-
+    
 - Backend:
   - Firebase
-
+  - Node JS
+  - Express
+    
 - Authentication:
   - Firebase Authentication
-
+    
 - Payment Processing:
-  - Razorpay Payment Gateway
-
+  - Stripe Payment Gateway
+    
 - Hosting & Deployment:
   - Vercel
-
+    
 - Version Control:
   - Git
   - GitHub
@@ -44,33 +43,32 @@ This project was built using the following technologies and tools:
 ## Screenshots
 
 <h1 align='center'>Homepage</h1>
-<img src='https://github.com/saurav-prasad/big-cart/assets/70149386/6fe7abab-ad9a-4271-964e-d1bc67894620'/>
+<img src="https://github.com/Ravi-aahirwar/Binks-Ecommerce/assets/147551112/6b7c8f02-7c38-42b1-89a6-9a84abbd5194"/>
 
 <h1 align='center'>Product Listing</h1>
-<img src='https://github.com/saurav-prasad/big-cart/assets/70149386/d56fe9e9-ac79-4ee1-b235-870b670c3dc4'/>
+<img  src="https://github.com/Ravi-aahirwar/Binks-Ecommerce/assets/147551112/412bf69b-3f2a-4376-b7fd-b7b8709cf9ec"/>
 
 <h1 align='center'>Cart</h1>
-<img src='https://github.com/saurav-prasad/big-cart/assets/70149386/a506209b-dcd1-45a7-8572-1ad977e1c132' />
+<img  src="https://github.com/Ravi-aahirwar/Binks-Ecommerce/assets/147551112/7ff9e98b-b74e-4299-8400-2e5ea3dd0038"/>
 
 <h1 align='center'>Checkout</h1>
-<img src='https://github.com/saurav-prasad/big-cart/assets/70149386/788f10b5-917d-4da6-84b1-cd00eb6a23f3' />
+<img src="https://github.com/Ravi-aahirwar/Binks-Ecommerce/assets/147551112/e6841bc4-c652-426f-88e9-90858276ad6f"/>
 
 <h1 align='center'>Whishlist</h1>
-<img src='https://github.com/saurav-prasad/big-cart/assets/70149386/4f8f7840-6a58-47c5-9f35-2d979af184d7' />
+<img  src="https://github.com/Ravi-aahirwar/Binks-Ecommerce/assets/147551112/9c320b3d-73db-4c0d-9b51-46445cb66868"/>
 <h1 align='center'>Payment</h1>
-<img src='https://github.com/saurav-prasad/big-cart/assets/70149386/5e9cd1fe-6078-4967-831e-238491ec35b0'/>
+<img src="https://github.com/Ravi-aahirwar/Binks-Ecommerce/assets/147551112/a3695b0b-4d7d-4163-9126-b8de4d4361af"/>
 
 ## Features
 
-
-List some of the key features of your e-commerce app:
+List some of the key features of My e-commerce app:
 
 - User registration and authentication
-- Product catalog with search and filter options
+- Product catalog with search, filter, sort options
 - Shopping cart functionality
 - Secure payment processing with Razorpay
-- Order history
-
+- WishList Page
+  
 ## Installation
 
 Provide instructions for setting up and running your project locally. Include any prerequisites, environment setup, and installation steps.
