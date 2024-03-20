@@ -20,7 +20,6 @@ This project was built using the following technologies and tools:
   - CSS
   - JavaScript
   - ReactJS
-  - Material UI
     
 - Backend:
   - Firebase
@@ -75,7 +74,7 @@ Provide instructions for setting up and running your project locally. Include an
 
 ```bash
 # Clone the repository
-git clone https://github.com/saurav-prasad/big-cart.git
+git clone https://github.com/Ravi-aahirwar/Binks-Ecommerce.git
 
 # Install dependencies
 npm install
